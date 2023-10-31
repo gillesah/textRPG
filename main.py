@@ -12,6 +12,8 @@ def main():
     while True:
         # attaque / chercher un objet / utiliser un objet
         personnage.attaquer(ennemi)
+        personnage.search_object()
+        print(personnage.inventaire["potion"])
         if ennemi.check_life():
             break
         ennemi.attaquer(personnage)
