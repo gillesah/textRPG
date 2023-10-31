@@ -9,6 +9,9 @@ class Characters(ABC):
         self.pv = pv
         self.dega_min = dega_min
         self.deg_max = dega_max
+        
+    def __str__(self):
+        return f"{self.nom} a {self.pv} points de vie restants et {self.nom} peut infliger des dégats jusqu'à {self.deg_max}."
 
     def attaquer(self, cible):
         pa = random.randint(cible.dega_min, cible.deg_max)
