@@ -23,6 +23,8 @@ def main():
 
         elif user_ask == "b":
             personnage.search_object()
+            print("Oh non... l'ennemi vous attaque !!!!!!")
+            ennemi.attaquer(personnage)
 
         time.sleep(3)
 
