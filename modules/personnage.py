@@ -7,6 +7,8 @@ class Personnage(Characters):
     def __init__(self, nom: str, pv: int, dega_min: int, dega_max: int) -> None:
         super().__init__(nom, pv, dega_min, dega_max)
         self.inventaire = {"potion": 0}
+        self.xp = 0
+        self.niveau = 1
 
     def search_object(self) -> None:
         if random.randint(0, 100) > 70:
