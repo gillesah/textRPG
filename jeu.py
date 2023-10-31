@@ -16,6 +16,10 @@ def main():
             "que voulez-vous faire : \n A - Attaquer \n B - rechercher un objet \n C - utiliser un objet \n REPONSE :  ").lower()
         if user_ask == "a":
             personnage.attaquer(ennemi)
+            time.sleep(3)
+
+            print("Oh non... l'ennemi vous attaque !!!!!! ***************************")
+            ennemi.attaquer(personnage)
 
         elif user_ask == "b":
             personnage.search_object()
