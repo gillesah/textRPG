@@ -1,6 +1,7 @@
 from modules.characters import Characters
 from modules.ennemi import Ennemi
 from modules.personnage import Personnage
+import time
 
 
 def main():
@@ -15,19 +16,11 @@ def main():
             "que voulez-vous faire : \n A - Attaquer \n B - rechercher un objet \n C - utiliser un objet \n REPONSE :  ").lower()
         if user_ask == "a":
             personnage.attaquer(ennemi)
-            print(f"{personnage.name} a attaqué {ennemi.name} !")
-            print(ennemi)
 
-            if ennemi.check_life():
-                print(f"{ennemi.name} est mort ! Vous avez gagné !")
-                break
+        elif user_ask == "b":
+            personnage.search_object()
 
-            ennemi.attaquer(personnage)
-            print(f"{ennemi.name} a attaqué {personnage.name} !")
-            print(personnage)
-            if personnage.check_life():
-                print(f"{personnage.name} est mort ! Vous avez perdu !")
-                break
+        time.sleep(3)
 
 
 main()
