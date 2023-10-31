@@ -5,12 +5,7 @@ from modules.personnage import Personnage
 import random
 
 
-def pop_ennemi():
-    ennemi_number = random.randint(0, 2)
-    return ennemi_number
-
-
-def main():
+def pop_ennemi() -> Ennemi:
 
     ennemis = [
         {"nom": "Gobelin",
@@ -27,12 +22,18 @@ def main():
          "dega_max": 20},
     ]
 
+    ennemi_number = random.randint(0, 2)
+    ennemi = Ennemi(ennemis[ennemi_number]["nom"], ennemis[ennemi_number]["pv"],
+                    ennemis[ennemi_number]["dega_min"], ennemis[ennemi_number]["dega_max"])
+    return ennemi
+
+
+def main():
+
     personnage = Personnage("Hero", 150, 10, 20)
     print(personnage)
 
-    ennemi_number = pop_ennemi()
-    ennemi = Ennemi(ennemis[ennemi_number]["nom"], ennemis[ennemi_number]["pv"],
-                    ennemis[ennemi_number]["dega_min"], ennemis[ennemi_number]["dega_max"])
+    ennemi = pop_ennemi()
     print(ennemi)
 
     while True:
