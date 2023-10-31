@@ -16,3 +16,10 @@ class Personnage(Characters):
             print("Tu as trouvé une potion")
         else:
             print("Tu n'as rien trouvé")
+            
+    def add_xp(self):
+        self.xp += 20
+        #augmenter le niveau pour chaque 100pts XP
+        if self.xp / self.niveau >= 100:
+            self.niveau +=1
+            
