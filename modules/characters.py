@@ -14,3 +14,6 @@ class Characters(ABC):
         pa = random.randint(character.dega_min, character.deg_max)
         print(f"{self.nom} attaque {character.nom} et lui inflige {pa}")
         character.pv -= pa
+
+    def __str__(self) -> str:
+        return f"{self.__class__.__name__} {self.nom}: pv: {self.pv}, dega_min: {self.dega_min}, dega_max: {self.deg_max}"
