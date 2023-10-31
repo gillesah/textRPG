@@ -5,7 +5,7 @@ import time
 
 
 def main():
-    personnage = Personnage("Hero", 35, 10, 20)
+    personnage = Personnage("Hero")
     print(personnage)
     ennemi = Ennemi("Gobelin", 35, 10, 20)
     print(ennemi)
