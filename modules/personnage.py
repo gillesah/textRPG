@@ -9,6 +9,9 @@ class Personnage(Characters):
         self.inventaire = {"potion": 0}
         self.xp = 0
         self.niveau = 1
+        
+    def __str__(self):
+        return f"{super().__str__()} Vous avez {self.xp} points d'expérience et vous êtes au niveau {self.niveau}.\n"
 
     def search_object(self) -> None:
         if random.randint(0, 100) > 70:
@@ -22,4 +25,5 @@ class Personnage(Characters):
         #augmenter le niveau pour chaque 100pts XP
         if self.xp / self.niveau >= 100:
             self.niveau +=1
+            print(f"\nFélicitations vous avez monté à niveau {self.niveau}!\n")
             
