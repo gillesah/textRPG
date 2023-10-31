@@ -48,7 +48,7 @@ def main():
 
         time.sleep(1)
         if personnage.check_life():
-            break
+            personnage.remove_xp()
 
 
 main()
