@@ -5,9 +5,9 @@ import time
 
 
 def main():
-    personnage = Personnage("Hero", 40, 10, 20)
+    personnage = Personnage("Hero", 35, 10, 20)
     print(personnage)
-    ennemi = Ennemi("Gobelin", 40, 10, 20)
+    ennemi = Ennemi("Gobelin", 35, 10, 20)
     print(ennemi)
 
     while True:
@@ -18,22 +18,35 @@ def main():
             personnage.attaquer(ennemi)
             if ennemi.check_life():
                 personnage.add_xp
+                print(f"vous avez {personnage.xp} XP")
+                continuer = input(
+                    "Voulez-vous continuer à jouer ? (O/N) :  ").lower()
+                if continuer == "o":
+                    print("changement de l'ennemi")
+                    continue
+                elif continuer == "n":
+                    print("ciao")
+                    time.sleep(1)
+                    break
+                else:
+                    print("merci de rentrer quelque  chose de valide")
+
         # l'ennemi attaque juste après
 
         elif user_ask == "b":
             personnage.search_object()
 
-        time.sleep(3)
-        print("Oh non... l'ennemi vous attaque !!!!!! ***************************")
+        time.sleep(1)
+        print("Oh non... l'ennemi vous attaque !!!!!! ****")
         ennemi.attaquer(personnage)
 
-        time.sleep(3)
+        time.sleep(1)
         print("*"*8)
         print(personnage)
         print(ennemi)
         print("*"*8)
 
-        time.sleep(3)
+        time.sleep(1)
         if personnage.check_life():
             break
 
