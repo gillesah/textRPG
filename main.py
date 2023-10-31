@@ -11,12 +11,13 @@ def main():
 
     while True:
         personnage.attaquer(ennemi)
+        personnage.search_object()
+        print(personnage.inventaire["potion"])
         if ennemi.check_life():
             break
         ennemi.attaquer(personnage)
         if personnage.check_life():
             break
-
 
 
 main()
