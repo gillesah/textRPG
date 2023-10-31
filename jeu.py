@@ -1,13 +1,14 @@
 from modules.characters import Characters
 from modules.ennemi import Ennemi
 from modules.personnage import Personnage
+from main import pop_ennemi
 import time
 
 
 def main():
     personnage = Personnage("Hero")
     print(personnage)
-    ennemi = Ennemi("Gobelin", 35, 10, 20)
+    ennemi = pop_ennemi()
     print(ennemi)
 
     while True:
@@ -23,13 +24,16 @@ def main():
                     "Voulez-vous continuer à jouer ? (O/N) :  ").lower()
                 if continuer == "o":
                     print("changement de l'ennemi")
+                    ennemi = pop_ennemi()
+                    print(f" Attention, voici le{ennemi}")
+
                     continue
                 elif continuer == "n":
                     print("ciao")
                     time.sleep(1)
                     break
                 else:
-                    print("merci de rentrer quelque  chose de valide")
+                    print("merci de rentrer quelque chose de valide")
 
         # l'ennemi attaque juste après
 
