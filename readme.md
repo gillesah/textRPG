@@ -22,3 +22,9 @@
 13. Permettez au personnage d'équiper des articles, tels que des armes ou des armures, pour améliorer ses statistiques.
 14. Limitez le personnage à un type d'équipement (casque, armure, arme, etc.) par emplacement, offrant un choix stratégique au joueur.
 15. Implémentez un système de sauvegarde et de chargement de la partie, permettant au joueur de revenir à sa progression précédente. z
+
+# To do
+
+- [ ] améliorer l'UML
+- [ ] voir comment gérer les dégats
+- [ ] voir une fonction de gestion
