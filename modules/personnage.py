@@ -4,12 +4,14 @@ import random
 
 class Personnage(Characters):
 
-    def __init__(self, nom: str ) -> None:
-        super().__init__(nom, pv = 100, dega_min = 10, dega_max = 20)
+    pv_max = 100
+
+    def __init__(self, nom: str) -> None:
+        super().__init__(nom, pv=Personnage.pv_max, dega_min=10, dega_max=20)
         self.inventaire = {"potion": 0}
         self.xp = 0
         self.niveau = 1
-        
+
     def __str__(self):
         return f"{super().__str__()} \nVous avez {self.xp} points d'expérience et vous êtes au niveau {self.niveau}.\n"
 
@@ -19,20 +21,36 @@ class Personnage(Characters):
             print("Tu as trouvé une potion")
         else:
             print("Tu n'as rien trouvé")
-            
+
     def add_xp(self):
         self.xp += 20
         # augmenter le niveau pour chaque 100pts XP
         if self.xp - self.niveau*100 >= 100:
-            self.niveau +=1
-            print(f"\nFélicitations vous avez monté au niveau {self.niveau}!\n")
+            self.niveau += 1
+            print(
+                f"\nFélicitations vous avez monté au niveau {self.niveau}!\n")
             self.pv += 20
-            print(f"\Vous avez gagné 20 points de vie en bonus! Vous avez {self.pv} points de vie.\n")
-            
-            
+            print(
+                f"\Vous avez gagné 20 points de vie en bonus! Vous avez {self.pv} points de vie.\n")
+
     def remove_xp(self):
         self.xp -= 20
         # vérifier si le jouer descendre d'un niveau
-        if self.xp < self.niveau * 100: 
-            self.niveau -=1
-            print(f"\nDommage, vous avez perdu un niveau. _\nVous êtes de retour au niveau {self.niveau}!\n")
+        if self.xp < self.niveau * 100:
+            self.niveau -= 1
+            print(
+                f"\nDommage, vous avez perdu un niveau. _\nVous êtes de retour au niveau {self.niveau}!\n")
+
+    def list_inventory(self) -> None:
+        for key, value in self.inventaire.items():
+            print(f"Vous avez {value} {key}.")
+
+    def use_potion(self) -> None:
+        if self.inventaire["potion"]:
+            self.inventaire["potion"] -= 1
+            self.pv += 30
+            if self.pv > self.pv_max:
+                self.pv = self.pv_max
+            print("Vous venez d'utiliser une potion.")
+            print("Vos points de vie augmentent de 30 points.")
+            return True
