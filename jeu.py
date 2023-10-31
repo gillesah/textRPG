@@ -40,7 +40,8 @@ def jeu():
             if ennemi.check_life():
                 personnage.add_xp()
                 print(f"vous avez {personnage.xp} XP")
-                continuer = input("Voulez-vous continuer à jouer ? (O/N) :  ").lower()
+                continuer = input(
+                    "Voulez-vous continuer à jouer ? (O/N) :  ").lower()
                 if continuer == "o":
                     print("changement de l'ennemi")
                     ennemi = pop_ennemi()
@@ -58,6 +59,11 @@ def jeu():
 
         elif user_ask == "b":
             personnage.search_object()
+
+        elif user_ask == "c":
+            personnage.list_inventory()
+            if not personnage.use_potion():
+                continue
 
         else:
             print("merci d'entrer une valeur A, B ou C")
