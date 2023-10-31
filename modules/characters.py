@@ -1,9 +1,8 @@
-class Ennemi:
-    pass
+from abc import ABC, abstractmethod
 
 
-class Personnage:
-    def __init__(self, nom, pv) -> None:
+class Characters(ABC):
+    def __init__(self, nom: str, pv: int) -> None:
         self.nom = nom
         self.pv = pv
 

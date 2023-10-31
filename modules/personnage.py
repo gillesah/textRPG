@@ -1,7 +1,5 @@
-class Personnage:
-    def __init__(self, nom, pv) -> None:
-        self.nom = nom
-        self.pv = pv
+from modules.characters import Characters
 
-    def attaquer(self):
-        p
+
+class Personnage(Characters):
+    pass
