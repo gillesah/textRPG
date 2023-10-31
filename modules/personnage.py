@@ -5,10 +5,7 @@ import random
 class Personnage(Characters):
 
     def __init__(self, nom: str ) -> None:
-        super().__init__(nom)
-        self.pv: int = 100 
-        self.dega_min: int = 10 
-        self.dega_max: int = 20
+        super().__init__(nom, pv = 100, dega_min = 10, dega_max = 20)
         self.inventaire = {"potion": 0}
         self.xp = 0
         self.niveau = 1
