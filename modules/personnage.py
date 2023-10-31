@@ -11,7 +11,7 @@ class Personnage(Characters):
         self.niveau = 1
         
     def __str__(self):
-        return f"{super().__str__()} Vous avez {self.xp} points d'expérience et vous êtes au niveau {self.niveau}.\n"
+        return f"{super().__str__()} \nVous avez {self.xp} points d'expérience et vous êtes au niveau {self.niveau}.\n"
 
     def search_object(self) -> None:
         if random.randint(0, 100) > 70:
