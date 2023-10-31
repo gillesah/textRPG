@@ -2,6 +2,7 @@ from modules.characters import Characters
 from modules.ennemi import Ennemi
 from modules.personnage import Personnage
 
+
 def main():
     personnage = Personnage("Hero", 150, 10, 20)
     print(personnage)
