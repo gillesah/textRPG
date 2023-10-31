@@ -6,7 +6,7 @@ import time
 
 
 def main():
-    personnage = Personnage("Hero", 65, 10, 20)
+    personnage = Personnage("Hero")
     print(personnage)
     ennemi = pop_ennemi()
     print(ennemi)
@@ -25,7 +25,7 @@ def main():
                 if continuer == "o":
                     print("changement de l'ennemi")
                     ennemi = pop_ennemi()
-                    print(f" Attention, voici le{ennemi}")
+                    print(f" Attention, voici {ennemi}")
 
                     continue
                 elif continuer == "n":
@@ -40,6 +40,11 @@ def main():
         elif user_ask == "b":
             personnage.search_object()
 
+        else:
+            print("merci d'entrer une valeur A, B ou C")
+            user_ask = input(
+                "que voulez-vous faire : \n A - Attaquer \n B - rechercher un objet \n C - utiliser un objet \n REPONSE :  ").lower()
+
         time.sleep(1)
         print("Oh non... l'ennemi vous attaque !!!!!! ****")
         ennemi.attaquer(personnage)
@@ -53,6 +58,7 @@ def main():
         time.sleep(1)
         if personnage.check_life():
             personnage.remove_xp()
+            # faire rejouer
 
 
 main()

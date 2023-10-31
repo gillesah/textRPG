@@ -30,7 +30,7 @@ def pop_ennemi() -> Ennemi:
 
 def main():
 
-    personnage = Personnage("Hero", 150, 10, 20)
+    personnage = Personnage("Hero")
     print(personnage)
 
     ennemi = pop_ennemi()
