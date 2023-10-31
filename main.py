@@ -4,7 +4,9 @@ from modules.personnage import Personnage
 
 def main():
     personnage = Personnage("Hero", 150, 10, 20)
+    print(personnage)
     ennemi = Ennemi("Gobelin", 150, 10, 20)
+    print(ennemi)
 
     while True:
         personnage.attaquer(ennemi)
