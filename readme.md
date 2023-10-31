@@ -12,8 +12,8 @@
 
 ## Partie 2 - Ajouts potentiels
 
-6. Améliorez le jeu en ajoutant une fonctionnalité qui permet à l'ennemi d'attaquer le personnage.
-7. Introduisez des statistiques pour le personnage, telles que des dégâts supplémentaires, des points de vies supplémentaire, et les points d'expérience (XP).
+6. Améliorez le jeu en ajoutant une fonctionnalité qui permet à l'ennemi d'attaquer le personnage. // attaque à chaque coup ?
+7. Introduisez des statistiques pour le personnage, telles que des dégâts supplémentaires, des points de vies supplémentaire, et les points d'expérience (XP). // Attaquer ou rechercher un objet 
 8. Introduisez un système de niveau pour le personnage.
 9. Permettez au personnage de gagner de l'expérience à la fin de chaque combat gagné contre un ennemi et de monter en niveau.
 10. Dans le cas ou le combat est perdu, le personnage perd un niveau.Partie 3 - Fonctionnalités Premium
@@ -25,6 +25,5 @@
 
 # To do
 
-- [ ] améliorer l'UML
-- [ ] voir comment gérer les dégats
-- [ ] voir une fonction de gestion
+- [ ] Gilles : interaction avec l'utilisateur 
+- [ ] fonction 
