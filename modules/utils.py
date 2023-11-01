@@ -1,11 +1,13 @@
 import random
 from modules.ennemi import Ennemi
 import time
+from modules.personnage import Personnage
 
 # l'ennemi est choisi en random
 
 
 def pop_ennemi() -> Ennemi:
+    """Return un nouvel ennemi à partir d'une liste de dictionnaires avec les attributs des ennemis possibles"""
     ennemis = [
         {
             "nom": "Gobelin",
@@ -66,19 +68,28 @@ def pop_ennemi() -> Ennemi:
 
 # fonction continuer le joue en fin de partie
 def continuer(personnage):
+    """_summary_
+    Permet à l'utilisateur de choisir de continuer le jeu ou le quitter après une bataille.
+    """
     while True:
         rejouer = input("Voulez-vous rejouer ? (O/N) :  ").lower()
-        if rejouer == "o":
+
+        if (
+            rejouer == "o"
+        ):  # Créer un nouvel ennemin remettre des points en place et continuez le jeu
             print("changement de l'ennemi")
+
             if personnage.pv <= 0:
                 personnage.inventaire["potion"] = 0
                 personnage.inventaire["epee"] = 0
             personnage.pv = personnage.pv_max
+            print(personnage)
+            personnage.show_XP()
             ennemi = pop_ennemi()
             print(f" Attention, voici \n{ennemi.intro}\n{ennemi}")
             return ennemi
 
-        elif rejouer == "n":
+        elif rejouer == "n":  # Afficher un message de fin et quitter le jeu
             print(
                 f"\nVous terminez le jeu avec {personnage.xp} points d'expérience au niveau {personnage.niveau}.\n"
             )
@@ -105,6 +116,8 @@ def continuer(personnage):
 
 
 def show_title():
+    """_summary_
+    Affiche le titre du jeu en arte ASCII"""
     print(
         """
           
@@ -127,6 +140,8 @@ def show_title():
 
 
 def declare_victory():
+    """_summary_
+    Affiche Victoire en arte ASCII"""
     print(
         """
         _      _        _           
@@ -140,6 +155,8 @@ def declare_victory():
 
 
 def declare_defeat():
+    """_summary_
+    Affiche Bataille Perdue en arte ASCII"""
     print(
         """
           
