@@ -1,7 +1,8 @@
 import random
 from modules.ennemi import Ennemi
-from modules.personnage import Personnage
 import time
+
+# l'ennemi est choisi en random
 
 
 def pop_ennemi() -> Ennemi:
@@ -20,6 +21,8 @@ def pop_ennemi() -> Ennemi:
     )
     return ennemi
 
+# fonction pour continuer ou non de jouer
+
 
 def continuer():
     while True:
@@ -33,9 +36,11 @@ def continuer():
         elif continuer == "n":
             print("ciao")
             time.sleep(1)
-            return "break"
+            break
         else:
             print("merci de rentrer quelque chose dAe valide")
+
+# fonction rejouer en cas de defaite du personnage
 
 
 def rejouer(personnage):

@@ -1,5 +1,4 @@
-from modules.characters import Characters
-from modules.ennemi import Ennemi
+
 from modules.personnage import Personnage
 from modules.utils import pop_ennemi, continuer, rejouer
 import time
