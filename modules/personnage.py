@@ -31,8 +31,11 @@ class Personnage(Characters):
         if self.inventaire["potion"] >= 1:
             print(f"{self.nom} utilise une potion.")
             self.pv += 20
+            if self.pv > self.pv_max:
+                self.pv = self.pv_max
             self.inventaire["potion"] -= 1
             print(f"{self.nom} a maintenant {self.pv} points de vie")
+            return True
         else:
             print(f"{self.nom} n'a pas assez de potion... désolé")
     # ajout d'XP si le personnage a gagné

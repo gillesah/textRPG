@@ -7,6 +7,7 @@ class Characters(ABC):
     def __init__(self, nom: str, pv: int, dega_min: int, dega_max: int) -> None:
         self.nom = nom
         self.pv = pv
+        self.pv_max = pv
         self.dega_min = dega_min
         self.deg_max = dega_max
 
