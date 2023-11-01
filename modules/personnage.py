@@ -4,10 +4,8 @@ import random
 
 class Personnage(Characters):
 
-    pv_max = 100
-
     def __init__(self, nom: str) -> None:
-        super().__init__(nom, pv=Personnage.pv_max, dega_min=10, dega_max=20)
+        super().__init__(nom, pv=100, dega_min=10, dega_max=20)
         self.inventaire = {"potion": 0}
         self.xp = 0
         self.niveau = 1
@@ -16,11 +14,20 @@ class Personnage(Characters):
         return f"{super().__str__()} \nVous avez {self.xp} points d'expérience et vous êtes au niveau {self.niveau}.\n"
 
     def search_object(self) -> None:
-        if random.randint(0, 100) > 70:
+        if random.randint(0, 100) > 50:
             self.inventaire["potion"] += 1
             print("Tu as trouvé une potion")
         else:
             print("Tu n'as rien trouvé")
+
+    def use_potion(self):
+        if self.inventaire["potion"] >= 1:
+            print(f"{self.nom} utilise une potion")
+            self.pv += 20
+            self.inventaire["potion"] -= 1
+            print(f"{self.nom} a maintenant {self.pv} points de vie")
+        else:
+            print(f"{self.nom} n'a pas assez de potion... désolé")
 
     def add_xp(self):
         self.xp += 20
@@ -40,17 +47,3 @@ class Personnage(Characters):
             self.niveau -= 1
             print(
                 f"\nDommage, vous avez perdu un niveau. _\nVous êtes de retour au niveau {self.niveau}!\n")
-
-    def list_inventory(self) -> None:
-        for key, value in self.inventaire.items():
-            print(f"Vous avez {value} {key}.")
-
-    def use_potion(self) -> None:
-        if self.inventaire["potion"]:
-            self.inventaire["potion"] -= 1
-            self.pv += 30
-            if self.pv > self.pv_max:
-                self.pv = self.pv_max
-            print("Vous venez d'utiliser une potion.")
-            print("Vos points de vie augmentent de 30 points.")
-            return True
