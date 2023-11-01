@@ -139,21 +139,6 @@ def show_title():
     )
 
 
-def declare_victory():
-    """_summary_
-    Affiche Victoire en arte ASCII"""
-    print(
-        """
-        _      _        _           
- /\   /(_) ___| |_ ___ (_)_ __ ___  
- \ \ / / |/ __| __/ _ \| | '__/ _ \ 
-  \ V /| | (__| || (_) | | | |  __/ 
-   \_/ |_|\___|\__\___/|_|_|  \___|                        
-
-"""
-    )
-
-
 def declare_defeat():
     """_summary_
     Affiche Bataille Perdue en arte ASCII"""
@@ -172,6 +157,21 @@ def declare_defeat():
 / ___/  __/ | | (_| | |_| |  __/ 
 \/    \___|_|  \__,_|\__,_|\___| 
                                  
+
+"""
+    )
+
+
+def declare_victory():
+    """_summary_
+    Affiche Victoire en arte ASCII"""
+    print(
+        """
+        _      _        _           
+ /\   /(_) ___| |_ ___ (_)_ __ ___  
+ \ \ / / |/ __| __/ _ \| | '__/ _ \ 
+  \ V /| | (__| || (_) | | | |  __/ 
+   \_/ |_|\___|\__\___/|_|_|  \___|                        
 
 """
     )
