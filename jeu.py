@@ -42,7 +42,7 @@ def jeu():
             if ennemi.check_life():
                 personnage.add_xp()
                 print(f"vous avez {personnage.xp} XP")
-                continuer()
+                continuer(personnage)
 
         # l'ennemi attaque juste après
 
