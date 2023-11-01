@@ -30,7 +30,8 @@ def jeu():
             personnage.search_object()
 
         elif user_ask == "c":
-            personnage.use_potion()
+            if not personnage.use_potion():
+                continue
 
         else:
             print("merci d'entrer une valeur A, B ou C")
