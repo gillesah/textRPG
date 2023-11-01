@@ -1,30 +1,18 @@
 from modules.personnage import Personnage
-from modules.utils import pop_ennemi, continuer
+from modules.utils import (
+    pop_ennemi,
+    continuer,
+    show_title,
+    declare_defeat,
+    declare_victory,
+)
 import time
 
 ennemi = pop_ennemi()
 
 
 def jeu():
-    print(
-        """
-          
-          
-
-   __           ___       _        _ _ _      
-  / /  __ _    / __\ __ _| |_ __ _(_) | | ___ 
- / /  / _` |  /__\/// _` | __/ _` | | | |/ _ \\
-/ /__| (_| | / \/  \ (_| | || (_| | | | |  __/
-\____/\__,_| \_____/\__,_|\__\__,_|_|_|_|\___|
-     _                                        
-  __| | ___  ___    /\  /\___ _ __ ___  ___   
- / _` |/ _ \/ __|  / /_/ / _ \ '__/ _ \/ __|  
-| (_| |  __/\__ \ / __  /  __/ | | (_) \__ \  
- \__,_|\___||___/ \/ /_/ \___|_|  \___/|___/  
-                                              
-
-"""
-    )
+    show_title()
     nom_personnage = input("Donnez un nom à votre personnage : ")
     personnage = Personnage(nom_personnage)
     print(f"\nBonjour {personnage.nom}!")
@@ -41,8 +29,8 @@ def jeu():
         if user_ask == "a":
             personnage.attaquer(ennemi)
             if ennemi.check_life():
+                declare_victory()
                 personnage.add_xp()
-                print(f"vous avez {personnage.xp} XP")
                 ennemi = continuer(personnage)
 
         # l'ennemi attaque juste après
@@ -66,6 +54,7 @@ def jeu():
 
         time.sleep(1)
         if personnage.check_life():
+            declare_defeat()
             personnage.remove_xp()
             time.sleep(1)
             ennemi = continuer(personnage)

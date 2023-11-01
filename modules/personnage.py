@@ -23,6 +23,17 @@ class Personnage(Characters):
         if random.randint(0, 100) > 50:
             self.inventaire["potion"] += 1
             print(f"{self.nom} a trouvé une potion")
+            print(
+                f"""
+                     °
+                    °                  
+                    ===
+                    |°|
+                    |~|
+                   (___)
+                  
+                  """
+            )
         else:
             print(f"{self.nom} n'a rien trouvé")
 
@@ -44,6 +55,8 @@ class Personnage(Characters):
 
     def add_xp(self):
         self.xp += 20
+        print(f"Vous avez {self.xp} XP")
+
         # augmenter le niveau pour chaque 100pts XP
         if self.xp - self.niveau * 100 >= 100:
             self.niveau += 1
