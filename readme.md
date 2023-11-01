@@ -25,11 +25,12 @@
 
 # To do
 
-- [ ] modifier a début du jeu : utilisation du nom du héro puis utilisation du vous.
-- [ ] Dommage, vous avez perdu un niveau. \_ Vous êtes de retour au niveau 0!
 
-Que voulez-vous faire : A - Attaquer B - rechercher un objet C - utiliser un objet
+fait :
 
-- [ ] trouver plus facilement une potion
-- [ ] C : ne marche pas changement list_inventory
-- [ ] 
+- quelques modifications textuelles, car il y avait des pbs entre nom du personnage et le vouvoyement
+- création de use_potion
+- modification ennemi if pv <= 0
+- création d'un fichier utils où on peut mettre des fonctions transverses
+- pb le gobelin revient toujours
+-

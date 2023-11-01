@@ -1,5 +1,7 @@
 import random
 from modules.ennemi import Ennemi
+from modules.personnage import Personnage
+import time
 
 
 def pop_ennemi() -> Ennemi:
@@ -18,3 +20,38 @@ def pop_ennemi() -> Ennemi:
     )
     return ennemi
 
+
+def continuer():
+    while True:
+        continuer = input("Voulez-vous continuer à jouer ? (O/N) :  ").lower()
+        if continuer == "o":
+            print("changement de l'ennemi")
+            ennemi = pop_ennemi()
+            print(f" Attention, voici {ennemi}")
+            return "continue"
+
+        elif continuer == "n":
+            print("ciao")
+            time.sleep(1)
+            return "break"
+        else:
+            print("merci de rentrer quelque chose dAe valide")
+
+
+def rejouer(personnage):
+    while True:
+        rejouer = input("Voulez-vous rejouer ? (O/N) :  ").lower()
+        if rejouer == "o":
+            print("changement de l'ennemi")
+            personnage.pv = 100
+            personnage.inventaire["potion"] = 0
+            ennemi = pop_ennemi()
+            print(f" Attention, voici {ennemi}")
+            return "continue"
+
+        elif rejouer == "n":
+            print("ciao")
+            time.sleep(1)
+            return "break"
+        else:
+            print("merci de choisir O (oui) ou N (non)")

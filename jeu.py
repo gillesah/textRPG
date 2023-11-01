@@ -1,8 +1,10 @@
 from modules.characters import Characters
 from modules.ennemi import Ennemi
 from modules.personnage import Personnage
-from modules.utils import pop_ennemi
+from modules.utils import pop_ennemi, continuer, rejouer
 import time
+
+ennemi = pop_ennemi()
 
 
 def jeu():
@@ -10,7 +12,6 @@ def jeu():
     personnage = Personnage(nom_personnage)
     print(f"Bonjour {personnage.nom}!")
     print(personnage)
-    ennemi = pop_ennemi()
     print(ennemi)
     print("**")
     while True:
@@ -22,20 +23,7 @@ def jeu():
             if ennemi.check_life():
                 personnage.add_xp()
                 print(f"vous avez {personnage.xp} XP")
-                continuer = input(
-                    "Voulez-vous continuer à jouer ? (O/N) :  ").lower()
-                if continuer == "o":
-                    print("changement de l'ennemi")
-                    ennemi = pop_ennemi()
-                    print(f" Attention, voici {ennemi}")
-
-                    continue
-                elif continuer == "n":
-                    print("ciao")
-                    time.sleep(1)
-                    break
-                else:
-                    print("merci de rentrer quelque chose dAe valide")
+                continuer()
 
         # l'ennemi attaque juste après
 
@@ -64,7 +52,8 @@ def jeu():
         time.sleep(1)
         if personnage.check_life():
             personnage.remove_xp()
-            # faire rejouer
+            time.sleep(1)
+            rejouer(personnage)
 
 
 jeu()

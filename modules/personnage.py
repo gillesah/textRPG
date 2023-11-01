@@ -22,7 +22,7 @@ class Personnage(Characters):
 
     def use_potion(self):
         if self.inventaire["potion"] >= 1:
-            print(f"{self.nom} utilise une potion")
+            print(f"{self.nom} utilise une potion.")
             self.pv += 20
             self.inventaire["potion"] -= 1
             print(f"{self.nom} a maintenant {self.pv} points de vie")
