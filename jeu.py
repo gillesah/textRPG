@@ -17,7 +17,7 @@ def jeu():
     personnage = Personnage(nom_personnage)
     print(f"\nBonjour {personnage.nom}!")
     print(personnage.show_XP())
-    time.sleep(2.5)
+    time.sleep(2)
     ennemi = pop_ennemi()
     print(f"{personnage.nom} va affronter\n {ennemi.intro}")
     print(ennemi)
@@ -32,14 +32,19 @@ def jeu():
                 declare_victory()
                 personnage.add_xp()
                 ennemi = continuer(personnage)
-
-        # l'ennemi attaque juste après
+            else:
+                time.sleep(1)
+                print("**** Oh non... l'ennemi vous attaque !!!!!! ****")
+                ennemi.attaquer(personnage)
 
         elif user_ask == "b":
             personnage.search_object()
+            time.sleep(1)
+            print("**** Oh non... l'ennemi vous attaque !!!!!! ****")
+            ennemi.attaquer(personnage)
 
         elif user_ask == "c":
-            if not personnage.use_potion():
+            if not personnage.choose_object(ennemi):
                 continue
 
         else:
@@ -47,10 +52,7 @@ def jeu():
             user_ask = input(
                 "Que voulez-vous faire : \n A - Attaquer \n B - Rechercher un objet \n C - Utiliser un objet \n REPONSE :  "
             ).lower()
-
-        time.sleep(1)
-        print("**** Oh non... l'ennemi vous attaque !!!!!! ****")
-        ennemi.attaquer(personnage)
+            return None
 
         time.sleep(1)
         if personnage.check_life():
@@ -63,7 +65,6 @@ def jeu():
             print(personnage)
             print(ennemi)
             print("*" * 8)
-
         time.sleep(1)
 
 

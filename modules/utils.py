@@ -71,8 +71,9 @@ def continuer(personnage):
         if rejouer == "o":
             print("changement de l'ennemi")
             if personnage.pv <= 0:
-                personnage.pv = 100
                 personnage.inventaire["potion"] = 0
+                personnage.inventaire["epee"] = 0
+            personnage.pv = personnage.pv_max
             ennemi = pop_ennemi()
             print(f" Attention, voici \n{ennemi.intro}\n{ennemi}")
             return ennemi
@@ -100,7 +101,7 @@ def continuer(personnage):
             time.sleep(1)
             exit()
         else:
-            print("merci de choisir O (oui) ou N (non)")
+            print("Merci de choisir O (oui) ou N (non)")
 
 
 def show_title():

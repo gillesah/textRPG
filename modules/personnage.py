@@ -11,7 +11,7 @@ class Personnage(Characters):
 
     def __init__(self, nom: str) -> None:
         super().__init__(nom, pv=100, dega_min=10, dega_max=20)
-        self.inventaire = {"potion": 0}
+        self.inventaire = {"potion": 0, "epee": 0}
         self.xp = 0
         self.niveau = 1
 
@@ -20,7 +20,8 @@ class Personnage(Characters):
 
     # rechercher un objet (potion pour le moment)
     def search_object(self) -> None:
-        if random.randint(0, 100) > 50:
+        random_chance = random.randint(0, 100)
+        if random_chance > 50 and random_chance % 2 == 0:
             self.inventaire["potion"] += 1
             print(f"{self.nom} a trouvé une potion")
             print(
@@ -34,22 +35,69 @@ class Personnage(Characters):
                   
                   """
             )
+        elif random_chance > 50:
+            self.inventaire["epee"] += 1
+            print(f"{self.nom} a trouvé une épée")
+            print(
+                f"""
+                    ()
+                  __)(__
+                  '-<>-'
+                    )(  
+                    ||  
+                    || 
+                    ||
+                    ||
+                    || 
+                    ||  
+                    ||
+                    ||  
+                    \/
+                  
+                  """
+            )
         else:
             print(f"{self.nom} n'a rien trouvé")
 
-    # utiliser une potion
+    # choisir une potion à utiliser
 
-    def use_potion(self):
-        if self.inventaire["potion"] >= 1:
-            print(f"{self.nom} utilise une potion.")
+    def choose_object(self, ennemi):
+        print(
+            f"\nVous avez {self.inventaire['potion']} potions et {self.inventaire['epee']} épees.\n"
+        )
+        object = input(
+            "Quel objet voulez-vous utiliser ?\n A - Potion\n B - Épée\nREPONSE : "
+        ).lower()
+        if object == "a":
+            return self.use_object("potion")
+        elif object == "b":
+            return self.use_object("epee", ennemi)
+        else:
+            print("Merci d'entrer une valeur A ou B\n")
+            return self.choose_object(ennemi)
+
+    # utiliser l'objet choisi
+
+    def use_object(self, object: str, ennemi=""):
+        if self.inventaire[object] >= 1:
+            print(f"{self.nom} utilise une {object}.")
+            self.inventaire[object] -= 1
+        else:
+            print(f"{self.nom} n'a pas assez de potion... désolé")
+            return False  # à tester si c'est ok
+        if object == "potion":
             self.pv += 20
             if self.pv > self.pv_max:
                 self.pv = self.pv_max
-            self.inventaire["potion"] -= 1
             print(f"{self.nom} a maintenant {self.pv} points de vie")
             return True
-        else:
-            print(f"{self.nom} n'a pas assez de potion... désolé")
+        elif object == "epee":
+            print(
+                f"\n{ennemi.nom} perd 15 points de vie avant que {self.nom} l'attaque.\n"
+            )
+            ennemi.pv -= 15
+            self.attaquer(ennemi)
+            return True
 
     # ajout d'XP si le personnage a gagné
 
