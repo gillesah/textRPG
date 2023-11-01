@@ -30,6 +30,7 @@ def jeu():
     print(f"\nBonjour {personnage.nom}!")
     print(personnage.show_XP())
     time.sleep(2.5)
+    ennemi = pop_ennemi()
     print(f"{personnage.nom} va affronter\n {ennemi.intro}")
     print(ennemi)
     print("**")
@@ -42,7 +43,7 @@ def jeu():
             if ennemi.check_life():
                 personnage.add_xp()
                 print(f"vous avez {personnage.xp} XP")
-                continuer(personnage)
+                ennemi = continuer(personnage)
 
         # l'ennemi attaque juste après
 
@@ -67,7 +68,7 @@ def jeu():
         if personnage.check_life():
             personnage.remove_xp()
             time.sleep(1)
-            continuer(personnage)
+            ennemi = continuer(personnage)
         else:
             print("*" * 8)
             print(personnage)

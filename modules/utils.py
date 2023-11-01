@@ -75,7 +75,7 @@ def continuer(personnage):
                 personnage.inventaire["potion"] = 0
             ennemi = pop_ennemi()
             print(f" Attention, voici \n{ennemi.intro}\n{ennemi}")
-            return "continue"
+            return ennemi
 
         elif rejouer == "n":
             print(
