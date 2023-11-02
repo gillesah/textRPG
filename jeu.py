@@ -60,9 +60,17 @@ def jeu():
             ennemi.attaquer(personnage)
 
         elif user_ask == "c":
-            if not personnage.choose_object(ennemi):
-                # pourquoi on a besoin d'un if ici ?
-                continue
+            # choisir et puis utiliser un objet de l'inventaire
+            choix_objet = personnage.choose_object()
+            personnage.use_object(choix_objet, ennemi)
+            if ennemi.check_life():
+                # si l'ennemi est mort, déclarer la victoire et demander à continuer
+                declare_victory()
+                personnage.add_xp()
+                ennemi = continuer(
+                    personnage
+                )  # permet de changer l'ennemi si le joueur décide de continuer
+            continue
 
         else:
             # si la réponse de l'joueur n'est pas valide, demandez à nouveau

@@ -66,14 +66,11 @@ class Personnage(Characters):
 
     # choisir une potion à utiliser
 
-    def choose_object(self, ennemi):
+    def choose_object(self) -> str:
         """_summary_
         Affiche l'inventaire de le personnage et lui demande de choisir entre une potione et une épee.
-        Args:
-            ennemi (Ennemi): l'ennemi est nécessaire au cas où l'épée est utilisé pour
-            pouvoir réduire ses PV en appellant use_object()
         Return:
-            La fonctionne use_object en passant la choix de l'objet en paramètre.
+            La fonctionne retourne un string de l'objet choixi par le joueur
         """
         print(
             f"\nVous avez {self.inventaire['potion']} potions et {self.inventaire['epee']} épees.\n"
@@ -82,23 +79,22 @@ class Personnage(Characters):
             "Quel objet voulez-vous utiliser ?\n A - Potion\n B - Épée\nREPONSE : "
         ).lower()
         if object == "a":
-            return self.use_object("potion")
+            return "potion"
         elif object == "b":
-            return self.use_object("epee", ennemi)
+            return "epee"
         else:
             print("Merci d'entrer une valeur A ou B\n")
-            return self.choose_object(ennemi)
+            return self.choose_object(self)
 
     # utiliser l'objet choisi
 
-    def use_object(self, object: str, ennemi="") -> bool:
+    def use_object(self, object: str, ennemi) -> bool:
         """_summary_
 
         Args:
             object (str): l'objet choixi (potion ou epee)
             ennemi (str, optional): un objet ennemi est nécessaire pour utiliser
-            l'épée qui réduit les PV de l'énnemi. Un string vide par défaut pour
-            d'autres objets.
+            l'épée qui réduit les PV de l'énnemi.
 
         Returns:
             _type_: bool True si l'objet est utilisé et Faux si le personnage n'en a pas assez
@@ -134,7 +130,7 @@ class Personnage(Characters):
         print(f"Vous avez {self.xp} XP")
 
         # augmenter le niveau pour chaque 100pts XP
-        if self.xp - self.niveau * 100 >= 100:
+        if self.xp - self.niveau * 100 >= 0:
             self.niveau += 1
             print(f"\nFélicitations {self.nom} a monté au niveau {self.niveau}!\n")
             self.pv += 20
