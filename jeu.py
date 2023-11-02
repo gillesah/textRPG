@@ -5,6 +5,10 @@ from modules.utils import (
     show_title,
     declare_defeat,
     declare_victory,
+    epee_trouvee,
+    potion_trouvee,
+    descendre_niveau,
+    monter_niveau,
 )
 import time
 
@@ -42,7 +46,10 @@ def jeu():
             if ennemi.check_life():
                 # si l'ennemi est mort, déclarer la victoire et demander à continuer
                 declare_victory()
-                personnage.add_xp()
+                monter = personnage.add_xp()
+                if monter:
+                    monter_niveau(personnage)
+
                 ennemi = continuer(
                     personnage
                 )  # permet de changer l'ennemi si le joueur décide de continuer
@@ -54,7 +61,12 @@ def jeu():
 
         elif user_ask == "b":
             # le personnage cherche un objet et l'ennemi attaque ensuite
-            personnage.search_object()
+            objet_trouve = personnage.search_object()
+            if objet_trouve == "potion":
+                potion_trouvee(personnage)
+            elif objet_trouve == "epee":
+                epee_trouvee(personnage)
+
             time.sleep(1)
             print("**** Oh non... l'ennemi vous attaque !!!!!! ****")
             ennemi.attaquer(personnage)
@@ -83,7 +95,10 @@ def jeu():
             # vérifie si le personnage est en vie et si il est mort,
             # déclarer la défaite et proposer à continuer
             declare_defeat()
-            personnage.remove_xp()
+            descendre = personnage.remove_xp()
+            if descendre:
+                descendre_niveau(personnage)
+
             time.sleep(1)
             ennemi = continuer(
                 personnage

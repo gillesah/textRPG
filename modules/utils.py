@@ -68,7 +68,7 @@ def pop_ennemi() -> Ennemi:
 
 # fonction continuer le joue en fin de partie
 def continuer(personnage):
-    """_summary_
+    """
     Permet à l'utilisateur de choisir de continuer le jeu ou le quitter après une bataille.
     """
     while True:
@@ -116,7 +116,7 @@ def continuer(personnage):
 
 
 def show_title():
-    """_summary_
+    """
     Affiche le titre du jeu en arte ASCII"""
     print(
         """
@@ -140,7 +140,7 @@ def show_title():
 
 
 def declare_defeat():
-    """_summary_
+    """
     Affiche Bataille Perdue en arte ASCII"""
     print(
         """
@@ -163,7 +163,7 @@ def declare_defeat():
 
 
 def declare_victory():
-    """_summary_
+    """
     Affiche Victoire en arte ASCII"""
     print(
         """
@@ -174,4 +174,98 @@ def declare_victory():
    \_/ |_|\___|\__\___/|_|_|  \___|                        
 
 """
+    )
+
+
+def epee_trouvee(personnage):
+    """
+    Affiche que le personnage a trouvé une épée
+
+    Args:
+        personnage (obj - Personnage): le personnage du joueur
+    """
+    print(f"{personnage.nom} a trouvé une épée")
+    print(
+        f"""
+                    ()
+                  __)(__
+                  '-<>-'
+                    )(  
+                    ||  
+                    || 
+                    ||
+                    ||
+                    || 
+                    ||  
+                    ||
+                    ||  
+                    \/
+                  
+                  """
+    )
+
+
+def potion_trouvee(personnage):
+    """
+    Affiche que le personnage a trouvé une potion
+
+    Args:
+        personnage (obj - Personnage): le personnage du joueur
+    """
+    print(f"{personnage.nom} a trouvé une potion")
+    print(
+        f"""
+                     °
+                    °                  
+                    ===
+                    |°|
+                    |~|
+                   (___)
+                  
+                  """
+    )
+
+
+def descendre_niveau(personnage):
+    """
+    Affiche que le personnage a descendu d'un niveau
+
+    Args:
+        personnage (obj - Personnage): le personnage du joueur
+    """
+    print(
+        """
+   __   _                               
+  /\ \ (_)_   _____  __ _ _   _        
+ /  \/ / \ \ / / _ \/ _` | | | |  _____ 
+/ /\  /| |\ V /  __/ (_| | |_| | |_____|
+\_\ \/ |_| \_/ \___|\__,_|\__,_|     
+                                        
+"""
+    )
+    print(
+        f"\nDommage, {personnage.nom} a perdu un niveau. \n{personnage.nom} est de retour au niveau {personnage.niveau}!\n"
+    )
+
+
+def monter_niveau(personnage: Personnage):
+    """
+    Affiche que le personnage a monté d'un niveau
+
+    Args:
+        personnage (obj - Personnage): le personnage du joueur
+    """
+    print(
+        """
+     __ _                               
+  /\ \ (_)_   _____  __ _ _   _     _   
+ /  \/ / \ \ / / _ \/ _` | | | |  _| |_ 
+/ /\  /| |\ V /  __/ (_| | |_| | |_   _|
+\_\ \/ |_| \_/ \___|\__,_|\__,_|   |_|  
+                                        
+"""
+    )
+    print(f"\nFélicitations {personnage.nom} a monté au niveau {personnage.niveau}!\n")
+    print(
+        f"{personnage.nom} a gagné 20 points de vie en bonus! Il peut désormais avoir jusqu'à {personnage.pv_max} points de vie.\n"
     )

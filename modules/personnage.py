@@ -3,7 +3,7 @@ import random
 
 
 class Personnage(Characters):
-    """_summary_
+    """
     Classe pour le personnage controlée par l'utilisateur
     Enfant de la classe Characters
     """
@@ -23,51 +23,23 @@ class Personnage(Characters):
         """
         Un int aléatoire est utiliser pour donner 50% de chance à trouver un objet.
         Si l'int entre 50 et 99 est pair, une potion est trouvée. Si l'int entre 50 et 99 est impair, une épée est trouvée.
-        Tout objet trouvé est ajouté à l'inventaire de le personnage et la résultat est affichée.
+        Tout objet trouvé est ajouté à l'inventaire de le personnage
+        Return: le str de l'objet trouvé pour premettre d'appeler l'affichage de l'objet ensuite
         """
         random_chance = random.randint(0, 100)
         if random_chance >= 50 and random_chance % 2 == 0:
             self.inventaire["potion"] += 1
-            print(f"{self.nom} a trouvé une potion")
-            print(
-                f"""
-                     °
-                    °                  
-                    ===
-                    |°|
-                    |~|
-                   (___)
-                  
-                  """
-            )
+            return "potion"  # le return permet d'ensuite appeler l'affichage de l'obet
         elif random_chance >= 50:
             self.inventaire["epee"] += 1
-            print(f"{self.nom} a trouvé une épée")
-            print(
-                f"""
-                    ()
-                  __)(__
-                  '-<>-'
-                    )(  
-                    ||  
-                    || 
-                    ||
-                    ||
-                    || 
-                    ||  
-                    ||
-                    ||  
-                    \/
-                  
-                  """
-            )
+            return "epee"  # le return permet d'ensuite appeler l'affichage de l'obet
         else:
             print(f"{self.nom} n'a rien trouvé")
 
     # choisir une potion à utiliser
 
     def choose_object(self) -> str:
-        """_summary_
+        """
         Affiche l'inventaire de le personnage et lui demande de choisir entre une potione et une épee.
         Return:
             La fonctionne retourne un string de l'objet choixi par le joueur
@@ -89,8 +61,8 @@ class Personnage(Characters):
     # utiliser l'objet choisi
 
     def use_object(self, object: str, ennemi) -> bool:
-        """_summary_
-
+        """
+        Permet d'utiliser l'objet que le joeur a choisi avec choose_object
 
         Args:
             object (str): l'objet choixi (potion ou epee)
@@ -123,9 +95,11 @@ class Personnage(Characters):
     # ajout d'XP si le personnage a gagné
 
     def add_xp(self):
-        """_summary_
+        """
         Augmente les points d'expérience quand le personnage gagne. Le nivea est également augmenté chaque fois que le personnage
         dépasse les 100 points et les points de vie maximale augmente avec le niveau.
+        Returns:
+            _type_: bool  True si le jouer monte d'un niveau
         """
         self.xp += 20
         print(f"Vous avez {self.xp} XP")
@@ -133,28 +107,17 @@ class Personnage(Characters):
         # augmenter le niveau pour chaque 100pts XP
         if self.xp - self.niveau * 100 >= 0:
             self.niveau += 1
-            print(
-                """
-     __ _                               
-  /\ \ (_)_   _____  __ _ _   _     _   
- /  \/ / \ \ / / _ \/ _` | | | |  _| |_ 
-/ /\  /| |\ V /  __/ (_| | |_| | |_   _|
-\_\ \/ |_| \_/ \___|\__,_|\__,_|   |_|  
-                                        
-"""
-            )
-            print(f"\nFélicitations {self.nom} a monté au niveau {self.niveau}!\n")
             self.pv += 20
             self.pv_max += 20
-            print(
-                f"{self.nom} a gagné 20 points de vie en bonus! Il peut désormais avoir jusqu'à {self.pv_max} points de vie.\n"
-            )
+            return True  # le return permet d'ensuite appeler l'affichage de changement de niveau
 
     # suppression d'XP si le personnage perd
     def remove_xp(self):
-        """_summary_
+        """
         Si le personnage perd les XP sont réduits sans pouvoir allez en dessous de 0.
         Le niveau est également décrementé si nécessaire (les niveaux changent tous les 100 XP).
+        Returns:
+            _type_: bool  True si le jouer descend d'un niveau
         """
         self.xp -= 20
         if self.xp < 0:
@@ -168,16 +131,4 @@ class Personnage(Characters):
         if self.xp < self.niveau * 100 and self.niveau != 1:
             self.niveau -= 1
             self.pv_max -= 20
-            print(
-                """
-   __   _                               
-  /\ \ (_)_   _____  __ _ _   _        
- /  \/ / \ \ / / _ \/ _` | | | |  _____ 
-/ /\  /| |\ V /  __/ (_| | |_| | |_____|
-\_\ \/ |_| \_/ \___|\__,_|\__,_|     
-                                        
-"""
-            )
-            print(
-                f"\nDommage, {self.nom} a perdu un niveau. \n{self.nom} est de retour au niveau {self.niveau}!\n"
-            )
+            return True  # le return permet d'ensuite appeler l'affichage de changement de niveau
