@@ -165,7 +165,7 @@ class Personnage(Characters):
             f"{self.nom} a perdu 20 points d'expérience. Il lui reste {self.xp} points."
         )
         # vérifier si le jouer descendre d'un niveau
-        if self.xp < self.niveau * 100 and self.niveau is not 1:
+        if self.xp < self.niveau * 100 and self.niveau != 1:
             self.niveau -= 1
             self.pv_max -= 20
             print(
