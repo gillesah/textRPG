@@ -132,11 +132,21 @@ class Personnage(Characters):
         # augmenter le niveau pour chaque 100pts XP
         if self.xp - self.niveau * 100 >= 0:
             self.niveau += 1
+            print(
+                """
+     __ _                               
+  /\ \ (_)_   _____  __ _ _   _     _   
+ /  \/ / \ \ / / _ \/ _` | | | |  _| |_ 
+/ /\  /| |\ V /  __/ (_| | |_| | |_   _|
+\_\ \/ |_| \_/ \___|\__,_|\__,_|   |_|  
+                                        
+"""
+            )
             print(f"\nFélicitations {self.nom} a monté au niveau {self.niveau}!\n")
             self.pv += 20
             self.pv_max += 20
             print(
-                f"{self.nom} a gagné 20 points de vie en bonus! Il a {self.pv} points de vie et peut avoir jusqu'à {self.pv_max} points de vie.\n"
+                f"{self.nom} a gagné 20 points de vie en bonus! Il peut désormais avoir jusqu'à {self.pv_max} points de vie.\n"
             )
 
     # suppression d'XP si le personnage perd
