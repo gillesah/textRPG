@@ -25,12 +25,9 @@
 
 # To do
 
-
 fait :
 
 - quelques modifications textuelles, car il y avait des pbs entre nom du personnage et le vouvoyement
-- création de use_potion
-- modification ennemi if pv <= 0
-- création d'un fichier utils où on peut mettre des fonctions transverses
-- pb le gobelin revient toujours
 -
+
+![fin](./updated%20faux%20UML.jpg)
