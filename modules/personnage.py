@@ -91,6 +91,7 @@ class Personnage(Characters):
     def use_object(self, object: str, ennemi) -> bool:
         """_summary_
 
+
         Args:
             object (str): l'objet choixi (potion ou epee)
             ennemi (str, optional): un objet ennemi est nécessaire pour utiliser
@@ -166,6 +167,7 @@ class Personnage(Characters):
         # vérifier si le jouer descendre d'un niveau
         if self.xp < self.niveau * 100 and self.niveau is not 1:
             self.niveau -= 1
+            self.pv_max -= 20
             print(
                 f"\nDommage, {self.nom} a perdu un niveau. _\n{self.nom} est de retour au niveau {self.niveau}!\n"
             )
