@@ -177,6 +177,7 @@ class Personnage(Characters):
 \_\ \/ |_| \_/ \___|\__,_|\__,_|     
                                         
 """
+            )
             print(
                 f"\nDommage, {self.nom} a perdu un niveau. \n{self.nom} est de retour au niveau {self.niveau}!\n"
             )
