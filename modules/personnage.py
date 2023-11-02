@@ -84,7 +84,7 @@ class Personnage(Characters):
             return "epee"
         else:
             print("Merci d'entrer une valeur A ou B\n")
-            return self.choose_object(self)
+            return self.choose_object()
 
     # utiliser l'objet choisi
 
@@ -169,5 +169,14 @@ class Personnage(Characters):
             self.niveau -= 1
             self.pv_max -= 20
             print(
-                f"\nDommage, {self.nom} a perdu un niveau. _\n{self.nom} est de retour au niveau {self.niveau}!\n"
+                """
+     __ _                               
+  /\ \ (_)_   _____  __ _ _   _        
+ /  \/ / \ \ / / _ \/ _` | | | |  _____ 
+/ /\  /| |\ V /  __/ (_| | |_| | |_____|
+\_\ \/ |_| \_/ \___|\__,_|\__,_|     
+                                        
+"""
+            print(
+                f"\nDommage, {self.nom} a perdu un niveau. \n{self.nom} est de retour au niveau {self.niveau}!\n"
             )
