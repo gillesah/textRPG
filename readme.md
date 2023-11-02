@@ -23,11 +23,4 @@
 14. Limitez le personnage à un type d'équipement (casque, armure, arme, etc.) par emplacement, offrant un choix stratégique au joueur.
 15. Implémentez un système de sauvegarde et de chargement de la partie, permettant au joueur de revenir à sa progression précédente. z
 
-# To do
-
-fait :
-
-- quelques modifications textuelles, car il y avait des pbs entre nom du personnage et le vouvoyement
--
-
 ![fin](./updated%20faux%20UML.jpg)
